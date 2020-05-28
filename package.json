@@ -1,0 +1,38 @@
+{
+    "name": "fflib-snippets",
+    "displayName": "fflib Snippets",
+    "author": "jtowers",
+    "publisher": "jtowers",
+    "icon": "img/logo.png",
+    "description": "Extension providing snippets to handle common fflib tasks",
+    "license": "SEE LICENSE IN LICENSE",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "keywords": [
+        "apex",
+        "snippet",
+        "salesforce",
+        "fflib"
+    ],
+    "categories": [
+        "Snippets"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jtowers/fflib-vscode-snippets"
+    },
+    "bugs": {
+        "url": "https://github.com/jtowers/fflib-vscode-snippets/issues",
+        "email": "john.michael.towers@gmail.com"
+    },
+    "contributes": {
+        "snippets": [
+            {
+                "language": "apex",
+                "path": "./snippets/fflib.json"
+            }
+        ]
+    }
+}

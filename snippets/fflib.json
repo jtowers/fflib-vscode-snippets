@@ -1,0 +1,74 @@
+{
+	"Generate Id": {
+		"prefix": ["fflib-generate-id"],
+		"body": "fflib_IdGenerator.generate(${1}.SObjectType);"
+	},
+	"Apex Mocks": {
+		"prefix": "fflib-apex-mocks",
+		"body":[
+			"fflib_ApexMocks ${1:mocks} = new fflib_ApexMocks();"
+		],
+		"description": "create new instance of fflib_ApexMocks()"
+	},
+	"Mock Class":{
+		"prefix": "fflib-mock-class",
+		"body": [
+			"${1:class} ${2:variableName} = ($1)${3:mocks}.mock($1.class);"
+		],
+		"description": "creates a mock instance of a class"
+	},
+	"Stubbing":{
+		"prefix": "fflib-stub",
+		"body": ["${1:mocks}.startStubbing();\n$0\n${1:mocks}.stopStubbing();"],
+		"description": "Create stub method block"
+	},
+	"Then Return":{
+		"prefix": ["fflib-then-return"],
+		"body": [
+			"${1:mocks}.when(${2:mockClass}.${3:mockMethod}(${4:mockMethodArgs})).thenReturn(${5:returnValue});"
+		],
+		"description": "create mock.when().thenReturn() block"
+	},
+	"Then Throw":{
+		"prefix": ["fflib-then-throw"],
+		"body": [
+			"${1:mocks}.when(${2:mockClass}.${3:mockMethod}(${4:mockMethodArgs})).thenThrow(${5:exceptionToThrow});"
+		],
+		"description": "create mock.when().thenReturn() block"
+	},
+	"Do Throw When":{
+		"prefix": ["fflib-do-throw"],
+		"body": [
+			"((${1:mockInterfaceType}) ${2:mocks}.doThrowWhen(${3:exceptionOrListOfExceptions}, ${4:mockInstance})).${5:mockInstanceMethod}();"
+		],
+		"description": "template for mocks.doThrowWhen()"
+	},
+	"Set Selector Mock":{
+		"prefix": ["fflib-set-selector-mock"],
+		"body": [
+			"${1:Application}.Selector.setMock(${2:mockInstance});"
+		]
+	},
+	"Set Domain Mock":{
+		"prefix": ["fflib-set-domain-mock"],
+		"body": [
+			"${1:Application}.Selector.setMock(${2:mockInstance});"
+		]
+	},
+	"Set Service Mock": {
+		"prefix": ["set-service-mock"],
+		"body": [
+			"${1:Application}.Service.setMock(${2:serviceInterface}.class, ${3:mockInstance});"
+		]
+	},
+	"Set Unit of Work Mock": {
+		"prefix": ["set-uow-mock"],
+		"body": [
+			"${1:Application}.UnitOfWork.setMock(${2:mockUowInstance});"
+		]
+	},
+	"Verification": {
+		"prefix": "fflib-verify",
+		"body": "((${1:mockInterface})${2:mocks}.verify(${3:mockObjectImplementation}, new fflib_VerificationMode().times(${4:times}).description(${5:description}))).${6:mockMethod}($0);"
+	}
+}
